@@ -68,30 +68,30 @@ def train(model, train_loader, epochs, optimizer, loss_fn, device):
     """
     
     # TODO: Paste the train() method developed in the notebook here.
-for epoch in range(1, epochs + 1):
-    model.train()
-    total_loss = 0
-    for batch in train_loader:         
-        batch_X, batch_y = batch
+    for epoch in range(1, epochs + 1):
+        model.train()
+        total_loss = 0
+        for batch in train_loader:         
+            batch_X, batch_y = batch
 
-        batch_X = batch_X.to(device)
-        batch_y = batch_y.to(device)
+            batch_X = batch_X.to(device)
+            batch_y = batch_y.to(device)
 
-        # TODO: Complete this train method to train the model provided.
-        # calculate the graduant 
-        optimizer.zero_grad()
-        # forward
-        output = model.forward(batch_X)
-        # calculate the loss
-        loss = loss_fn(output, batch_y)
-        # backward  
-        loss.backward()
-        # optimizer step 
-        optimizer.step()
+            # TODO: Complete this train method to train the model provided.
+            # calculate the graduant 
+            optimizer.zero_grad()
+            # forward
+            output = model.forward(batch_X)
+            # calculate the loss
+            loss = loss_fn(output, batch_y)
+            # backward  
+            loss.backward()
+            # optimizer step 
+            optimizer.step()
 
-        total_loss += loss.data.item()
-    print("Epoch: {}, BCELoss: {}".format(epoch, total_loss / len(train_loader)))
-    pass
+            total_loss += loss.data.item()
+        print("Epoch: {}, BCELoss: {}".format(epoch, total_loss / len(train_loader)))
+        pass
 
 
 if __name__ == '__main__':
